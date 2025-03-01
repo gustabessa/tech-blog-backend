@@ -1,4 +1,4 @@
-export abstract class ValueObject<TProps extends object> {
+export abstract class AbstractValueObject<TProps extends object> {
   protected readonly _props: TProps;
 
   constructor(props: TProps) {
@@ -9,5 +9,5 @@ export abstract class ValueObject<TProps extends object> {
     return this._props;
   }
 
-  abstract equals(vo: ValueObject<TProps>): boolean;
+  abstract equals(vo: AbstractValueObject<TProps>): boolean;
 }

@@ -1,4 +1,4 @@
 export * from './agregate-root.interface';
-export * from './identifier.interface';
-export * from './entity.interface';
-export * from './value-object.interface';
+export * from './abstract-identifier.interface';
+export * from './abstract-entity.interface';
+export * from './abstract-value-object.interface';

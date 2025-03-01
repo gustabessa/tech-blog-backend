@@ -1,13 +1,16 @@
-import { Result } from '../../../utils';
-import { AggregateRoot } from '../../domain/agregate-root.interface';
-import { Identifier, IdentifierTypes } from '../../domain/identifier.interface';
+import { Result } from '../../utils';
+import { AggregateRoot } from '../domain/agregate-root.interface';
+import {
+  AbstractIdentifier,
+  IdentifierTypes,
+} from '../domain/abstract-identifier.interface';
 
 export abstract class Repository<
   TAggregateRoot extends AggregateRoot<
     TAggregateRootIdentifier,
     TAggregateRootProps
   >,
-  TAggregateRootIdentifier extends Identifier<IdentifierTypes>,
+  TAggregateRootIdentifier extends AbstractIdentifier<IdentifierTypes>,
   TAggregateRootProps,
 > {
   abstract persist(

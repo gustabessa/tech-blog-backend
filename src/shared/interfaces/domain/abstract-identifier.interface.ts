@@ -1,13 +1,13 @@
-import { ValueObject } from './value-object.interface';
+import { AbstractValueObject } from './abstract-value-object.interface';
 
 export type IdentifierTypes = string | number | null;
 interface IdentifierVoProps<TIdType extends IdentifierTypes> {
   _id: TIdType;
 }
 
-export abstract class Identifier<
+export abstract class AbstractIdentifier<
   TIdType extends IdentifierTypes,
-> extends ValueObject<IdentifierVoProps<TIdType>> {
+> extends AbstractValueObject<IdentifierVoProps<TIdType>> {
   constructor(id: TIdType) {
     super({ _id: id });
   }
@@ -16,7 +16,7 @@ export abstract class Identifier<
     return this._props._id;
   }
 
-  equals(vo: Identifier<TIdType>): boolean {
+  equals(vo: AbstractIdentifier<TIdType>): boolean {
     if (this.value === null || vo.value === null) {
       return false;
     }
