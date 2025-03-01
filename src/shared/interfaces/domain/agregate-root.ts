@@ -2,7 +2,6 @@ import { Entity } from './entity';
 import { Identifier, IdentifierTypes } from './identifier';
 
 export abstract class AggregateRoot<
-  TId extends Identifier<any>,
+  TId extends Identifier<IdentifierTypes>,
   TProps,
-  TIdType extends IdentifierTypes,
-> extends Entity<TId, TProps, TIdType> {}
+> extends Entity<TId, TProps> {}

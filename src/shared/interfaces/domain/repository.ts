@@ -5,12 +5,10 @@ import { Identifier, IdentifierTypes } from './identifier';
 export abstract class Repository<
   TAggregateRoot extends AggregateRoot<
     TAggregateRootIdentifier,
-    TAggregateRootProps,
-    TAggregateRootIdType
+    TAggregateRootProps
   >,
-  TAggregateRootIdentifier extends Identifier<TAggregateRootIdType>,
+  TAggregateRootIdentifier extends Identifier<IdentifierTypes>,
   TAggregateRootProps,
-  TAggregateRootIdType extends IdentifierTypes,
 > {
   abstract persist(aggregate: TAggregateRoot): Promise<Result<void>>;
 
