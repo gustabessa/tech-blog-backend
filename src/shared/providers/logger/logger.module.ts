@@ -1,4 +1,4 @@
-import { DynamicModule } from '@nestjs/common';
+import { DynamicModule, Logger } from '@nestjs/common';
 import { NestjsLoggerProvider } from './nestjs-logger';
 
 export class LoggerModule {
@@ -6,7 +6,7 @@ export class LoggerModule {
     return {
       global: true,
       module: LoggerModule,
-      providers: [NestjsLoggerProvider],
+      providers: [Logger, NestjsLoggerProvider],
       exports: [NestjsLoggerProvider],
     };
   }
