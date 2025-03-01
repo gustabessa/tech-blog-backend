@@ -1,0 +1,4 @@
+export enum EApplicationErrorKind {
+  UNKNOWN_ERROR = 'UNKNOWN_ERROR',
+  RESOURCE_NOT_FOUND = 'RESOURCE_NOT_FOUND',
+}
