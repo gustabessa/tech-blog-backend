@@ -1,5 +1,11 @@
 import { EApplicationErrorKind } from './application-error-kind.enum';
 
+const httpStatusByApplicationErrorKind: Record<EApplicationErrorKind, number> =
+  {
+    [EApplicationErrorKind.RESOURCE_NOT_FOUND]: 404,
+    [EApplicationErrorKind.UNKNOWN_ERROR]: 500,
+  };
+
 export interface IApplicationErrorProps {
   message?: string;
   errorKind?: EApplicationErrorKind;
@@ -15,5 +21,9 @@ export class ApplicationError extends Error {
     super(message);
     this.name = 'ApplicationError';
     this.errorKind = errorKind;
+  }
+
+  toHttpStatus(): number {
+    return httpStatusByApplicationErrorKind[this.errorKind] ?? 500;
   }
 }
