@@ -23,7 +23,7 @@ export class ApplicationError extends Error {
     this.errorKind = errorKind;
   }
 
-  toHttpStatus(): number {
+  get httpStatus(): number {
     return httpStatusByApplicationErrorKind[this.errorKind] ?? 500;
   }
 }
