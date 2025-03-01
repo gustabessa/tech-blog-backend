@@ -5,7 +5,7 @@ export abstract class ValueObject<TProps extends object> {
     this._props = Object.freeze(props);
   }
 
-  public getValue(): TProps {
+  public getProps(): TProps {
     return this._props;
   }
 
