@@ -1,4 +1,4 @@
-import { ValueObject } from './value-object';
+import { ValueObject } from './value-object.interface';
 
 export type IdentifierTypes = string | number | null;
 interface IdentifierVoProps<TIdType extends IdentifierTypes> {

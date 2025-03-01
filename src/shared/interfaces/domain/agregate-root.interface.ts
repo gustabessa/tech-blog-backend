@@ -1,5 +1,5 @@
-import { Entity } from './entity';
-import { Identifier, IdentifierTypes } from './identifier';
+import { Entity } from './entity.interface';
+import { Identifier, IdentifierTypes } from './identifier.interface';
 
 export abstract class AggregateRoot<
   TId extends Identifier<IdentifierTypes>,

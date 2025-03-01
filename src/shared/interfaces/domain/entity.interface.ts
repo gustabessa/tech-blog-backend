@@ -1,4 +1,4 @@
-import { Identifier, IdentifierTypes } from './identifier';
+import { Identifier, IdentifierTypes } from './identifier.interface';
 
 export abstract class Entity<TId extends Identifier<IdentifierTypes>, TProps> {
   protected readonly id?: TId;
