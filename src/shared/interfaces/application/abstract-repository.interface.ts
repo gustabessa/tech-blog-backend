@@ -1,5 +1,5 @@
 import { Result } from '../../utils';
-import { AggregateRoot } from '../domain/agregate-root.interface';
+import { AggregateRoot } from '../domain/abstract-agregate-root.interface';
 import {
   AbstractIdentifier,
   IdentifierTypes,
