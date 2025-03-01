@@ -1,4 +1,4 @@
-import { Result } from '../utils';
+import { Result } from '../../utils';
 import { AggregateRoot } from './agregate-root';
 import { Identifier, IdentifierTypes } from './identifier';
 
