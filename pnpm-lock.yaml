@@ -35,6 +35,9 @@ importers:
       class-validator:
         specifier: ^0.14.1
         version: 0.14.1
+      knex:
+        specifier: ^3.1.0
+        version: 3.1.0(pg@8.13.3)
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -6971,7 +6974,7 @@ snapshots:
 
   send@1.1.0:
     dependencies:
-      debug: 4.3.6
+      debug: 4.4.0
       destroy: 1.2.0
       encodeurl: 2.0.0
       escape-html: 1.0.3
