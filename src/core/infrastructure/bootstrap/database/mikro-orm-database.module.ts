@@ -8,7 +8,7 @@ import {
   IDatabaseConfigurations,
 } from 'src/shared/interfaces';
 
-export class DatabaseModule {
+export class MikroOrmDatabaseModule {
   static register(): DynamicModule {
     const factory = (
       configService: ConfigService<IAppConfigurations>,
@@ -44,7 +44,7 @@ export class DatabaseModule {
 
     return {
       global: true,
-      module: DatabaseModule,
+      module: MikroOrmDatabaseModule,
       imports: [
         MikroOrmModule.forRootAsync({
           imports: [ConfigModule],
