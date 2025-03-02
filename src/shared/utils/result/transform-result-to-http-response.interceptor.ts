@@ -11,7 +11,7 @@ import { Result } from './result';
 
 @Injectable()
 export class TransformResultToHttpResponseInterceptor<T>
-  implements NestInterceptor<T, any>
+  implements NestInterceptor<T, T | HttpException>
 {
   intercept(
     context: ExecutionContext,

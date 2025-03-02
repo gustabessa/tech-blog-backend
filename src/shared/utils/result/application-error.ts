@@ -3,7 +3,7 @@ import { EApplicationErrorKind } from './application-error-kind.enum';
 const httpStatusByApplicationErrorKind: Record<EApplicationErrorKind, number> =
   {
     [EApplicationErrorKind.RESOURCE_NOT_FOUND]: 404,
-    [EApplicationErrorKind.UNKNOWN_ERROR]: 500,
+    [EApplicationErrorKind.INTERNAL_SERVER_ERROR]: 500,
   };
 
 export interface IApplicationErrorProps {
@@ -16,7 +16,7 @@ export class ApplicationError extends Error {
 
   constructor({
     message = 'Internal server error',
-    errorKind = EApplicationErrorKind.UNKNOWN_ERROR,
+    errorKind = EApplicationErrorKind.INTERNAL_SERVER_ERROR,
   }: IApplicationErrorProps) {
     super(message);
     this.name = 'ApplicationError';
