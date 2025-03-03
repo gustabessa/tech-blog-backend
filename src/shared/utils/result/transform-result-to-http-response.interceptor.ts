@@ -27,17 +27,14 @@ export class TransformResultToHttpResponseInterceptor<TResultData>
         if (result instanceof Result) {
           if (result.isError()) {
             const response = context.switchToHttp().getResponse<Response>();
-
             response.status(result.error.httpStatus);
             return {
               statusCode: result.error.httpStatus,
               message: result.error.message,
             };
           }
-
           return result.value;
         }
-
         return result;
       }),
     );
