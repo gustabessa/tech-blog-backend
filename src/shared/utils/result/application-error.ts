@@ -27,6 +27,14 @@ export class ApplicationError extends Error {
     this.stack = stackTrace ?? this.stack;
   }
 
+  copyWith(error: Partial<IApplicationErrorProps>) {
+    return new ApplicationError({
+      message: error.message ?? this.message,
+      errorKind: error.errorKind ?? this.errorKind,
+      stackTrace: error.stackTrace ?? this.stack,
+    });
+  }
+
   get httpStatus(): number {
     return httpStatusByApplicationErrorKind[this.errorKind] ?? 500;
   }

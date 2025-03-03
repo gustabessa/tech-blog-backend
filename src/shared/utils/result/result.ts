@@ -6,7 +6,7 @@ interface ResultDTO<TResultValue> {
   isError: boolean;
 }
 
-export type ResultError = Result<any> & {
+export type ResultError = Result<never> & {
   error: ApplicationError;
 };
 
@@ -27,6 +27,13 @@ export class Result<TResultValue> {
 
   isError(): this is ResultError {
     return this._isError;
+  }
+
+  copyWith(error: Partial<IApplicationErrorProps>) {
+    if (this.isError()) {
+      return Result.error<TResultValue>(this.error.copyWith(error));
+    }
+    return this;
   }
 
   mapOk<TNewResultValue>(
