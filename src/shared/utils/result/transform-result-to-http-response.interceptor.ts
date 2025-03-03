@@ -3,28 +3,36 @@ import {
   NestInterceptor,
   ExecutionContext,
   CallHandler,
-  HttpException,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Result } from './result';
+import { Response } from 'express';
+
+interface HttpExceptionResponse {
+  statusCode: number;
+  message: string;
+}
 
 @Injectable()
-export class TransformResultToHttpResponseInterceptor<T>
-  implements NestInterceptor<T, T | HttpException>
+export class TransformResultToHttpResponseInterceptor<TResultData>
+  implements NestInterceptor<TResultData, TResultData | HttpExceptionResponse>
 {
   intercept(
     context: ExecutionContext,
     next: CallHandler,
-  ): Observable<T | HttpException> {
+  ): Observable<TResultData | HttpExceptionResponse> {
     return next.handle().pipe(
-      map((result: T | Result<T>) => {
+      map((result: TResultData | Result<TResultData>) => {
         if (result instanceof Result) {
           if (result.isError()) {
-            return new HttpException(
-              result.error.message,
-              result.error.httpStatus,
-            );
+            const response = context.switchToHttp().getResponse<Response>();
+
+            response.status(result.error.httpStatus);
+            return {
+              statusCode: result.error.httpStatus,
+              message: result.error.message,
+            };
           }
 
           return result.value;
