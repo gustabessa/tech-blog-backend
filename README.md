@@ -100,3 +100,9 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 
 ## TODO List:
 - Add Keycloak
+  [] Docker Image
+  [] Configurations & Auth Guards
+
+- Add Swagger Documentation
+  [] Swagger Configurations
+  [] Swagger Decorators (controllers and models)
