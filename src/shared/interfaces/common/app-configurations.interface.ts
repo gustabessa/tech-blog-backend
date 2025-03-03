@@ -7,7 +7,12 @@ export interface IDatabaseConfigurations {
   maxPool: string;
 }
 
+export interface IEncrypterConfigurations {
+  secret: string;
+}
+
 export interface IAppConfigurations {
   env: string;
   database: IDatabaseConfigurations;
+  encrypter: IEncrypterConfigurations;
 }

@@ -10,4 +10,7 @@ export const loadConfigurations = (): IAppConfigurations => ({
     name: process.env.DATABASE_NAME as string,
     maxPool: process.env.DATABASE_MAX_POOL as string,
   },
+  encrypter: {
+    secret: process.env.ENCRYPTER_SECRET as string,
+  },
 });
