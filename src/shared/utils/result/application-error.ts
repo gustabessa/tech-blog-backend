@@ -9,6 +9,7 @@ const httpStatusByApplicationErrorKind: Record<EApplicationErrorKind, number> =
 
 export interface IApplicationErrorProps {
   message?: string;
+  stackTrace?: string;
   errorKind?: EApplicationErrorKind;
 }
 
@@ -18,10 +19,12 @@ export class ApplicationError extends Error {
   constructor({
     message = 'Internal server error',
     errorKind = EApplicationErrorKind.INTERNAL_SERVER_ERROR,
+    stackTrace,
   }: IApplicationErrorProps) {
     super(message);
     this.name = 'ApplicationError';
     this.errorKind = errorKind;
+    this.stack = stackTrace ?? this.stack;
   }
 
   get httpStatus(): number {
