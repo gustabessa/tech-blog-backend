@@ -9,8 +9,8 @@ export class NestjsLogger implements ILogger {
     return this.logger.log(message);
   }
 
-  error(message: string): void {
-    return this.logger.error(message);
+  error(message: string, stackTrace?: string): void {
+    return this.logger.error(message, stackTrace);
   }
 
   warn(message: string): void {
