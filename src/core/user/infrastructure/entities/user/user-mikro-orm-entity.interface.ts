@@ -4,4 +4,5 @@ export interface IUserMikroOrmEntity {
   socialHandle: string;
   email: string;
   password: string;
+  salt: string;
 }

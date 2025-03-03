@@ -7,6 +7,7 @@ export interface UserProps {
   socialHandle: string;
   email: string;
   password: string;
+  salt: string;
 }
 
 export class User extends AggregateRoot<UserIdentifier, UserProps> {
@@ -28,6 +29,10 @@ export class User extends AggregateRoot<UserIdentifier, UserProps> {
 
   get password(): string {
     return this.props.password;
+  }
+
+  get salt(): string {
+    return this.props.salt;
   }
 
   private constructor(props: UserProps, id?: UserIdentifier) {

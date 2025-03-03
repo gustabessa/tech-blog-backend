@@ -9,6 +9,7 @@ export class UserMapper {
         socialHandle: user.socialHandle,
         email: user.email,
         password: user.password,
+        salt: user.salt,
       },
       new UserIdentifier(user.id),
     );
@@ -21,6 +22,7 @@ export class UserMapper {
       socialHandle: user.socialHandle,
       email: user.email,
       password: user.password,
+      salt: user.salt,
     });
   }
 }

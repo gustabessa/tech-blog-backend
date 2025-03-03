@@ -2,7 +2,7 @@ import { EntityManager, EntityRepository } from '@mikro-orm/core';
 import { Injectable, Provider } from '@nestjs/common';
 import { IUserRepository } from 'src/core/user/application/ports/out/repositories/user-repository.interface';
 import { User, UserIdentifier } from 'src/core/user/domain';
-import { Result } from 'src/shared/utils';
+import { formatError, Result } from 'src/shared/utils';
 import { EApplicationErrorKind } from 'src/shared/utils/result/application-error-kind.enum';
 import { UserMikroOrmEntity } from '../../../entities/user/user.mikro-orm-entity';
 import { UserMapper } from '../../../mappers/user.mikro-orm-mapper';
@@ -21,9 +21,11 @@ export class UserMikroOrmRepository implements IUserRepository {
       await this.em.persistAndFlush(userEntity);
 
       return Result.ok(new UserIdentifier(userEntity.id));
-    } catch {
+    } catch (error) {
+      const { message, stackTrace } = formatError(error);
       return Result.error({
-        message: 'Error persisting user.',
+        message,
+        stackTrace,
         errorKind: EApplicationErrorKind.INTERNAL_SERVER_ERROR,
       });
     }

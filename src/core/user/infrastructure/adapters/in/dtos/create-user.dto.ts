@@ -13,7 +13,7 @@ export class CreateUserDTO implements ICreateUserDTO {
   @IsString()
   @IsNotEmpty()
   @MaxLength(100)
-  name: string;
+  name!: string;
 
   @Matches(/@{1}[\w]+/, {
     message:
@@ -21,11 +21,11 @@ export class CreateUserDTO implements ICreateUserDTO {
   })
   @MinLength(4)
   @MaxLength(20)
-  socialHandle: string;
+  socialHandle!: string;
 
   @IsEmail()
-  email: string;
+  email!: string;
 
   @IsStrongPassword()
-  password: string;
+  password!: string;
 }
