@@ -3,8 +3,8 @@ import { Injectable, Provider } from '@nestjs/common';
 import {
   IGetPostsPaginated,
   IGetPostsPaginatedDTO,
+  IGetPostsPaginatedResponseDTO,
 } from 'src/core/post/application';
-import { IGetPostsResultDTO } from 'src/core/post/application/ports/out/dtos/get-posts-result-dto.interface';
 import { AbstractPaginatedResponseDTO } from 'src/shared/interfaces';
 import { Result } from 'src/shared/utils';
 import { PostMikroOrmEntity } from '../../entities/post.mikro-orm-entity';
@@ -15,7 +15,9 @@ export class GetPostsPaginated implements IGetPostsPaginated {
 
   async execute(
     value: IGetPostsPaginatedDTO,
-  ): Promise<Result<AbstractPaginatedResponseDTO<IGetPostsResultDTO>>> {
+  ): Promise<
+    Result<AbstractPaginatedResponseDTO<IGetPostsPaginatedResponseDTO>>
+  > {
     const { page, limit, title } = value;
     const statements: FilterQuery<PostMikroOrmEntity> = [];
 

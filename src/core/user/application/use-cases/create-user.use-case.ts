@@ -5,7 +5,7 @@ import { EApplicationErrorKind, Result } from 'src/shared/utils';
 import { User } from '../../domain';
 import { ICreateUserDTO } from '../ports/in/dtos/create-user-dto.interface';
 import { ICreateUser } from '../ports/in/use-cases/create-user.interface';
-import { ICreateUserResultDTO } from '../ports/out/dtos/create-user-result-dto.interface';
+import { ICreateUserResponseDTO } from '../ports/out/dtos/create-user-response-dto.interface';
 import { IUserRepository } from '../ports/out/repositories/user-repository.interface';
 
 @Injectable()
@@ -16,7 +16,7 @@ export class CreateUser implements ICreateUser {
     private readonly logger: ILogger,
   ) {}
 
-  async execute(dto: ICreateUserDTO): Promise<Result<ICreateUserResultDTO>> {
+  async execute(dto: ICreateUserDTO): Promise<Result<ICreateUserResponseDTO>> {
     const { name, email, socialHandle, password } = dto;
     const userExists = await this.userRepository.findByEmailOrSocialHandle({
       email: dto.email,
