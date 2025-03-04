@@ -5,7 +5,7 @@ import { ILogger } from 'src/shared/providers/logger';
 import { EApplicationErrorKind, Result } from 'src/shared/utils';
 import { ISignInUserDTO } from '../ports/in/dtos/sign-in-user-dto.interface';
 import { ISignInUser } from '../ports/in/use-cases/sign-in-user.interface';
-import { ISignInUserResultDTO } from '../ports/out/dtos/sign-in-user-result-dto.interface';
+import { ISignInUserResponseDTO } from '../ports/out/dtos/sign-in-user-response-dto.interface';
 import { IUserRepository } from '../ports/out/repositories/user-repository.interface';
 
 @Injectable()
@@ -17,7 +17,7 @@ export class SignInUser implements ISignInUser {
     private readonly logger: ILogger,
   ) {}
 
-  async execute(dto: ISignInUserDTO): Promise<Result<ISignInUserResultDTO>> {
+  async execute(dto: ISignInUserDTO): Promise<Result<ISignInUserResponseDTO>> {
     const { email, password } = dto;
     const userByEmailResult = await this.userRepository.findByEmail(email);
     if (userByEmailResult.isError()) {

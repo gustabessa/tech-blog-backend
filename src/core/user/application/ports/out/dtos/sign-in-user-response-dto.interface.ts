@@ -1,4 +1,4 @@
-export interface ISignInUserResultDTO {
+export interface ISignInUserResponseDTO {
   prefix: string;
   accessToken: string;
 }
