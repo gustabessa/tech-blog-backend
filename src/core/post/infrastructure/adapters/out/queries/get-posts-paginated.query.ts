@@ -7,7 +7,7 @@ import {
 } from 'src/core/post/application';
 import { AbstractPaginatedResponseDTO } from 'src/shared/interfaces';
 import { Result } from 'src/shared/utils';
-import { PostMikroOrmEntity } from '../../entities/post.mikro-orm-entity';
+import { PostMikroOrmEntity } from '../../../entities/post/post.mikro-orm-entity';
 
 @Injectable()
 export class GetPostsPaginated implements IGetPostsPaginated {
@@ -36,10 +36,10 @@ export class GetPostsPaginated implements IGetPostsPaginated {
 
     return Result.ok({
       data: pageData.map((post) => ({
-        id: post.id,
+        id: post.id as number,
         title: post.title,
         authorId: post.authorId,
-        createdAt: post.createdAt,
+        createdAt: post.createdAt as Date,
       })),
       total,
       page,

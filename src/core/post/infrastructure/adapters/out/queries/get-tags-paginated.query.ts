@@ -7,7 +7,7 @@ import {
 } from 'src/core/post/application';
 import { AbstractPaginatedResponseDTO } from 'src/shared/interfaces';
 import { Result } from 'src/shared/utils';
-import { TagMikroOrmEntity } from '../../entities/tag.mikro-orm-entity';
+import { TagMikroOrmEntity } from '../../../entities/tag/tag.mikro-orm-entity';
 
 @Injectable()
 export class GetTagsPaginated implements IGetTagsPaginated {
@@ -36,7 +36,7 @@ export class GetTagsPaginated implements IGetTagsPaginated {
 
     return Result.ok({
       data: pageData.map((tag) => ({
-        id: tag.id,
+        id: tag.id as number,
         name: tag.name,
       })),
       total,
