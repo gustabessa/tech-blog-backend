@@ -10,5 +10,7 @@ export abstract class IUserRepository extends Repository<
   abstract findByEmailOrSocialHandle(args: {
     email: string;
     socialHandle: string;
-  }): Promise<Result<User | null>>;
+  }): Promise<Result<User>>;
+
+  abstract findByEmail(email: string): Promise<Result<User>>;
 }

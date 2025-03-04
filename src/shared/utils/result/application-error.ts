@@ -2,6 +2,7 @@ import { EApplicationErrorKind } from './application-error-kind.enum';
 
 const httpStatusByApplicationErrorKind: Record<EApplicationErrorKind, number> =
   {
+    [EApplicationErrorKind.UNAUTHORIZED]: 401,
     [EApplicationErrorKind.RESOURCE_NOT_FOUND]: 404,
     [EApplicationErrorKind.CONFLICT]: 409,
     [EApplicationErrorKind.INTERNAL_SERVER_ERROR]: 500,

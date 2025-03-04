@@ -13,4 +13,9 @@ export const loadConfigurations = (): IAppConfigurations => ({
   encrypter: {
     secret: process.env.ENCRYPTER_SECRET as string,
   },
+  authentication: {
+    secret: process.env.AUTHENTICATION_SECRET as string,
+    expiresIn: process.env.AUTHENTICATION_EXPIRES_IN as string,
+    prefix: process.env.AUTHENTICATION_PREFIX as string,
+  },
 });

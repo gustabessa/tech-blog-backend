@@ -24,4 +24,20 @@ export class EnvironmentValidation {
   @Type(() => Number)
   @IsNumber()
   DATABASE_PORT!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  ENCRYPTER_SECRET!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  AUTHENTICATION_SECRET!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  AUTHENTICATION_EXPIRES_IN!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  AUTHENTICATION_PREFIX!: string;
 }

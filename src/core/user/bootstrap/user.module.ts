@@ -1,13 +1,18 @@
 import { DynamicModule } from '@nestjs/common';
-import { CreateUserProvider } from '../application';
+import { CreateUserProvider, SignInUserProvider } from '../application';
 import {
   UserController,
+  AuthController,
   UserMikroOrmEntity,
   UserMikroOrmRepositoryProvider,
 } from '../infrastructure';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 
-const providers = [UserMikroOrmRepositoryProvider, CreateUserProvider];
+const providers = [
+  UserMikroOrmRepositoryProvider,
+  CreateUserProvider,
+  SignInUserProvider,
+];
 
 export class CoreUserModule {
   static register(): DynamicModule {
@@ -18,7 +23,7 @@ export class CoreUserModule {
           entities: [UserMikroOrmEntity],
         }),
       ],
-      controllers: [UserController],
+      controllers: [AuthController, UserController],
       providers,
       exports: providers,
     };

@@ -49,11 +49,24 @@ export class UserMikroOrmRepository implements IUserRepository {
   async findByEmailOrSocialHandle(args: {
     email: string;
     socialHandle: string;
-  }): Promise<Result<User | null>> {
+  }): Promise<Result<User>> {
     const { email, socialHandle } = args;
     const user = await this.userRepository.findOne({
       $or: [{ email }, { socialHandle }],
     });
+
+    if (!user) {
+      return Result.error({
+        message: 'User not found.',
+        errorKind: EApplicationErrorKind.RESOURCE_NOT_FOUND,
+      });
+    }
+
+    return Result.ok(UserMapper.toDomain(user));
+  }
+
+  async findByEmail(email: string): Promise<Result<User>> {
+    const user = await this.userRepository.findOne({ email });
 
     if (!user) {
       return Result.error({
