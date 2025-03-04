@@ -14,18 +14,18 @@ export class GetPostsPaginated implements IGetPostsPaginated {
   constructor(private readonly em: EntityManager) {}
 
   async execute(
-    value: IGetPostsPaginatedDTO,
+    dto: IGetPostsPaginatedDTO,
   ): Promise<
     Result<AbstractPaginatedResponseDTO<IGetPostsPaginatedResponseDTO>>
   > {
-    const { page, limit, title } = value;
+    const { page, limit, title } = dto;
     const statements: FilterQuery<PostMikroOrmEntity> = [];
 
     if (title !== null) {
       statements.push({ title: { $ilike: `%${title}%` } });
     }
 
-    const [postsPage, total] = await this.em.findAndCount(
+    const [pageData, total] = await this.em.findAndCount(
       PostMikroOrmEntity,
       { $or: statements },
       {
@@ -35,7 +35,7 @@ export class GetPostsPaginated implements IGetPostsPaginated {
     );
 
     return Result.ok({
-      data: postsPage.map((post) => ({
+      data: pageData.map((post) => ({
         id: post.id,
         title: post.title,
         authorId: post.authorId,

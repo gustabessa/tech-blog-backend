@@ -5,7 +5,7 @@ export abstract class AbstractPaginatedRequestDTO {
   @Min(0)
   @IsNumber()
   @Type(() => Number)
-  page: number = 1;
+  page!: number;
 
   @Min(5)
   @Max(25)
