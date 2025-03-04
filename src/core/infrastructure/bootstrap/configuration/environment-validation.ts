@@ -1,5 +1,5 @@
 import { Type } from 'class-transformer';
-import { IsString, IsNotEmpty, IsNumber, IsIn } from 'class-validator';
+import { IsIn, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class EnvironmentValidation {
   @IsIn(['development', 'production'])

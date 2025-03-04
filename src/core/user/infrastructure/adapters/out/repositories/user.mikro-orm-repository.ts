@@ -2,7 +2,7 @@ import { EntityManager, EntityRepository } from '@mikro-orm/core';
 import { Injectable, Provider } from '@nestjs/common';
 import { IUserRepository } from 'src/core/user/application/ports/out/repositories/user-repository.interface';
 import { User, UserIdentifier } from 'src/core/user/domain';
-import { formatError, Result } from 'src/shared/utils';
+import { Result, formatError } from 'src/shared/utils';
 import { EApplicationErrorKind } from 'src/shared/utils/result/application-error-kind.enum';
 import { UserMikroOrmEntity } from '../../../entities/user/user.mikro-orm-entity';
 import { UserMapper } from '../../../mappers/user.mikro-orm-mapper';

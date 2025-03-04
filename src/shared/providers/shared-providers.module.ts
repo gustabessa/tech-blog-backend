@@ -1,8 +1,8 @@
 import { DynamicModule } from '@nestjs/common';
-import { LoggerModule } from './logger';
+import { ConfigurationModule } from 'src/core/infrastructure/bootstrap/configuration/configuration.module';
 import { EncrypterModule } from './encrypter';
 import { AuthenticationModule } from './http-authentication/http-authentication.module';
-import { ConfigurationModule } from 'src/core/infrastructure/bootstrap/configuration/configuration.module';
+import { LoggerModule } from './logger';
 
 export class SharedProvidersModule {
   static register(): DynamicModule {

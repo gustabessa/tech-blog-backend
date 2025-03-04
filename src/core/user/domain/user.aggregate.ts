@@ -1,4 +1,4 @@
-import { AggregateRoot, AbstractIdentifier } from 'src/shared/interfaces';
+import { AbstractIdentifier, AggregateRoot } from 'src/shared/interfaces';
 
 export class UserIdentifier extends AbstractIdentifier<number> {}
 

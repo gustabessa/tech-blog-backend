@@ -1,8 +1,8 @@
 import {
-  registerDecorator,
   ValidationOptions,
   ValidatorConstraint,
   ValidatorConstraintInterface,
+  registerDecorator,
 } from 'class-validator';
 import { passwordStrengthValidationRules } from '../constants/password-strength-validation-rules';
 

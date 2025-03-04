@@ -1,4 +1,11 @@
-import { EApplicationErrorKind, formatError, Result } from 'src/shared/utils';
+import { Injectable, Provider } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
+import {
+  IAppConfigurations,
+  IAuthenticationConfigurations,
+} from 'src/shared/interfaces';
+import { EApplicationErrorKind, Result, formatError } from 'src/shared/utils';
 import {
   IHttpAuthentication,
   ILoggedUser,
@@ -7,13 +14,6 @@ import {
   IVerifyArgs,
   IVerifyResult,
 } from './http-authentication.interface';
-import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
-import {
-  IAppConfigurations,
-  IAuthenticationConfigurations,
-} from 'src/shared/interfaces';
-import { Injectable, Provider } from '@nestjs/common';
 
 @Injectable()
 export class JwtAuthentication implements IHttpAuthentication {

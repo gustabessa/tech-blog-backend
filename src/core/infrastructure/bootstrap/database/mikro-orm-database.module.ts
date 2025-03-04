@@ -2,7 +2,7 @@ import { UnderscoreNamingStrategy } from '@mikro-orm/core';
 import { MikroOrmModule, MikroOrmModuleOptions } from '@mikro-orm/nestjs';
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 import { DynamicModule } from '@nestjs/common';
-import { ConfigService, ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import {
   IAppConfigurations,
   IDatabaseConfigurations,

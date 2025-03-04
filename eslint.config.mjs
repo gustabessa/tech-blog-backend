@@ -3,6 +3,7 @@ import eslint from '@eslint/js';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
+import * as importPlugin from 'eslint-plugin-import';
 
 export default tseslint.config(
   {
@@ -15,7 +16,7 @@ export default tseslint.config(
     languageOptions: {
       globals: {
         ...globals.node,
-        ...globals.jest,
+        ...globals.vitest,
       },
       ecmaVersion: 5,
       sourceType: 'module',
@@ -26,6 +27,9 @@ export default tseslint.config(
     },
   },
   {
+    plugins: {
+      import: importPlugin,
+    },
     rules: {
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-floating-promises': 'warn',
@@ -37,6 +41,16 @@ export default tseslint.config(
           argsIgnorePattern: '^_',
           varsIgnorePattern: '^_',
           caughtErrorsIgnorePattern: '^_',
+        },
+      ],
+      'import/order': [
+        'error',
+        {
+          groups: ['builtin', 'external', 'internal'],
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
         },
       ],
     },

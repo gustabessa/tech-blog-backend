@@ -1,8 +1,8 @@
 import { DynamicModule } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
+import { HttpAuthGuard } from './guards/http-auth.guard';
 import { JwtAuthenticationProvider } from './jwt-http-authentication';
 import { HttpAuthStrategy } from './strategies/http-auth.strategy';
-import { HttpAuthGuard } from './guards/http-auth.guard';
-import { JwtModule } from '@nestjs/jwt';
 
 const providers = [HttpAuthGuard, HttpAuthStrategy, JwtAuthenticationProvider];
 

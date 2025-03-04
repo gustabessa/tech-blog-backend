@@ -1,12 +1,12 @@
+import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { DynamicModule } from '@nestjs/common';
 import { CreateUserProvider, SignInUserProvider } from '../application';
 import {
-  UserController,
   AuthController,
+  UserController,
   UserMikroOrmEntity,
   UserMikroOrmRepositoryProvider,
 } from '../infrastructure';
-import { MikroOrmModule } from '@mikro-orm/nestjs';
 
 const providers = [
   UserMikroOrmRepositoryProvider,

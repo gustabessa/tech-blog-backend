@@ -1,8 +1,8 @@
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { DynamicModule } from '@nestjs/common';
 import { PostMikroOrmEntity } from '../infrastructure/adapters/entities/post.mikro-orm-entity';
-import { GetPostsPaginatedQueryProvider } from '../infrastructure/adapters/out/queries/get-posts-paginated.query';
 import { PostController } from '../infrastructure/adapters/in/controllers/post.controller';
+import { GetPostsPaginatedQueryProvider } from '../infrastructure/adapters/out/queries/get-posts-paginated.query';
 
 const providers = [GetPostsPaginatedQueryProvider];
 

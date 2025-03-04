@@ -1,19 +1,19 @@
-import { Injectable, Provider } from '@nestjs/common';
-import {
-  ICompareArgs,
-  ICompareResult,
-  IEncryptArgs,
-  IEncrypter,
-  IEncryptResult,
-} from './encrypter.interface';
-import { formatError, Result } from 'src/shared/utils';
-import argon2 from 'argon2';
 import { randomBytes } from 'node:crypto';
+import { Injectable, Provider } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import argon2 from 'argon2';
 import {
   IAppConfigurations,
   IEncrypterConfigurations,
 } from 'src/shared/interfaces';
+import { Result, formatError } from 'src/shared/utils';
+import {
+  ICompareArgs,
+  ICompareResult,
+  IEncryptArgs,
+  IEncryptResult,
+  IEncrypter,
+} from './encrypter.interface';
 
 @Injectable()
 export class Argon2Encrypter implements IEncrypter {

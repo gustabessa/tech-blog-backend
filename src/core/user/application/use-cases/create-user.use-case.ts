@@ -1,12 +1,12 @@
 import { Injectable, Provider } from '@nestjs/common';
+import { IEncrypter } from 'src/shared/providers/encrypter';
 import { ILogger } from 'src/shared/providers/logger';
 import { EApplicationErrorKind, Result } from 'src/shared/utils';
 import { User } from '../../domain';
-import { ICreateUser } from '../ports/in/use-cases/create-user.interface';
-import { IUserRepository } from '../ports/out/repositories/user-repository.interface';
 import { ICreateUserDTO } from '../ports/in/dtos/create-user-dto.interface';
+import { ICreateUser } from '../ports/in/use-cases/create-user.interface';
 import { ICreateUserResultDTO } from '../ports/out/dtos/create-user-result-dto.interface';
-import { IEncrypter } from 'src/shared/providers/encrypter';
+import { IUserRepository } from '../ports/out/repositories/user-repository.interface';
 
 @Injectable()
 export class CreateUser implements ICreateUser {

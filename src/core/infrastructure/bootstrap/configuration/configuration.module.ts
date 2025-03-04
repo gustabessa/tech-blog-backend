@@ -2,8 +2,8 @@ import { DynamicModule, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { plainToInstance } from 'class-transformer';
 import { validateSync } from 'class-validator';
-import { loadConfigurations } from './load-configurations';
 import { EnvironmentValidation } from './environment-validation';
+import { loadConfigurations } from './load-configurations';
 
 @Module({})
 export class ConfigurationModule {

@@ -1,12 +1,12 @@
 import { Injectable, Provider } from '@nestjs/common';
-import { ISignInUser } from '../ports/in/use-cases/sign-in-user.interface';
+import { IEncrypter } from 'src/shared/providers/encrypter';
+import { IHttpAuthentication } from 'src/shared/providers/http-authentication';
+import { ILogger } from 'src/shared/providers/logger';
 import { EApplicationErrorKind, Result } from 'src/shared/utils';
 import { ISignInUserDTO } from '../ports/in/dtos/sign-in-user-dto.interface';
+import { ISignInUser } from '../ports/in/use-cases/sign-in-user.interface';
 import { ISignInUserResultDTO } from '../ports/out/dtos/sign-in-user-result-dto.interface';
-import { IEncrypter } from 'src/shared/providers/encrypter';
 import { IUserRepository } from '../ports/out/repositories/user-repository.interface';
-import { ILogger } from 'src/shared/providers/logger';
-import { IHttpAuthentication } from 'src/shared/providers/http-authentication';
 
 @Injectable()
 export class SignInUser implements ISignInUser {
