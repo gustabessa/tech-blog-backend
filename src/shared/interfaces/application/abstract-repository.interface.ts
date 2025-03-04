@@ -5,7 +5,7 @@ import {
   IdentifierTypes,
 } from '../domain/abstract-identifier.interface';
 
-export abstract class Repository<
+export abstract class AbstractRepository<
   TAggregateRoot extends AggregateRoot<
     TAggregateRootIdentifier,
     TAggregateRootProps

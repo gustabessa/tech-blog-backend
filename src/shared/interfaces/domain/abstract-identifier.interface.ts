@@ -13,7 +13,7 @@ export abstract class AbstractIdentifier<
   }
 
   get value(): TIdType {
-    return this._props._id;
+    return this.props._id;
   }
 
   equals(vo: AbstractIdentifier<TIdType>): boolean {

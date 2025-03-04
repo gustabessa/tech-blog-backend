@@ -26,7 +26,7 @@ export class HttpAuthStrategy extends PassportStrategy(
       return false;
     }
     const { loggedUserClaims } = httpAuthVerifyResult.value;
-    Reflect.set(request, 'user', loggedUserClaims);
+    Reflect.set(request, 'loggedUser', loggedUserClaims);
 
     return true;
   }
