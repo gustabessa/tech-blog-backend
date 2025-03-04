@@ -50,6 +50,8 @@ export class CreateUser implements ICreateUser {
       socialHandle,
       password: hash,
       salt,
+      createdAt: null,
+      updatedAt: null,
     });
 
     const persistUserResult = await this.userRepository.persist(user);
@@ -66,7 +68,7 @@ export class CreateUser implements ICreateUser {
     }
 
     return persistUserResult.mapOk((identifier) => ({
-      id: identifier.value as number,
+      id: identifier.value,
     }));
   }
 }

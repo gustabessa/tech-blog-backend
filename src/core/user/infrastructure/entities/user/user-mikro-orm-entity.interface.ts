@@ -5,4 +5,6 @@ export interface IUserMikroOrmEntity {
   email: string;
   password: string;
   salt: string;
+  createdAt: Date | null;
+  updatedAt: Date | null;
 }

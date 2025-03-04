@@ -1,4 +1,5 @@
 import { AbstractIdentifier, AggregateRoot } from 'src/shared/interfaces';
+import { DateVO } from 'src/shared/utils';
 
 export class UserIdentifier extends AbstractIdentifier<number> {}
 
@@ -8,6 +9,8 @@ export interface IUserProps {
   email: string;
   password: string;
   salt: string;
+  createdAt: DateVO | null;
+  updatedAt: DateVO | null;
 }
 
 export class User extends AggregateRoot<UserIdentifier, IUserProps> {
@@ -33,6 +36,14 @@ export class User extends AggregateRoot<UserIdentifier, IUserProps> {
 
   get salt(): string {
     return this.props.salt;
+  }
+
+  get createdAt(): DateVO | null {
+    return this.props.createdAt;
+  }
+
+  get updatedAt(): DateVO | null {
+    return this.props.updatedAt;
   }
 
   private constructor(props: IUserProps, id?: UserIdentifier) {

@@ -22,10 +22,10 @@ export class UserMikroOrmEntity implements IUserMikroOrmEntity {
   salt: string;
 
   @Property({ onCreate: () => new Date() })
-  createdAt!: Date;
+  createdAt!: Date | null;
 
   @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
-  updatedAt!: Date;
+  updatedAt!: Date | null;
 
   constructor(dto: IUserMikroOrmEntity) {
     this.id = dto.id;
