@@ -1,8 +1,13 @@
+import { EntityManager } from '@mikro-orm/core';
+import { Injectable } from '@nestjs/common';
 import { User, UserIdentifier } from '../../domain';
 import { UserMikroOrmEntity } from '../entities/user/user.mikro-orm-entity';
 
+@Injectable()
 export class UserMapper {
-  static toDomain(user: UserMikroOrmEntity): User {
+  constructor(private readonly em: EntityManager) {}
+
+  toDomain(user: UserMikroOrmEntity): User {
     return User.create(
       {
         name: user.name,
@@ -11,12 +16,12 @@ export class UserMapper {
         password: user.password,
         salt: user.salt,
       },
-      new UserIdentifier(user.id),
+      user.id ? new UserIdentifier(user.id) : undefined,
     );
   }
 
-  static toPersistence(user: User): UserMikroOrmEntity {
-    return new UserMikroOrmEntity({
+  toPersistence(user: User): UserMikroOrmEntity {
+    const userEntity = new UserMikroOrmEntity({
       id: user.id,
       name: user.name,
       socialHandle: user.socialHandle,
@@ -24,5 +29,11 @@ export class UserMapper {
       password: user.password,
       salt: user.salt,
     });
+
+    if (user.id) {
+      this.em.merge(userEntity, { refresh: true });
+    }
+
+    return userEntity;
   }
 }

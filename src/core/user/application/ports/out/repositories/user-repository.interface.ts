@@ -1,11 +1,11 @@
-import { User, UserIdentifier, UserProps } from 'src/core/user/domain';
-import { Repository } from 'src/shared/interfaces';
+import { IUserProps, User, UserIdentifier } from 'src/core/user/domain';
+import { AbstractRepository } from 'src/shared/interfaces';
 import { Result } from 'src/shared/utils';
 
-export abstract class IUserRepository extends Repository<
+export abstract class IUserRepository extends AbstractRepository<
   User,
   UserIdentifier,
-  UserProps
+  IUserProps
 > {
   abstract findByEmailOrSocialHandle(args: {
     email: string;

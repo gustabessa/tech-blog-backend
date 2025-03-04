@@ -11,16 +11,19 @@ import { UserMapper } from '../../../mappers/user.mikro-orm-mapper';
 export class UserMikroOrmRepository implements IUserRepository {
   private readonly userRepository: EntityRepository<UserMikroOrmEntity>;
 
-  constructor(private readonly em: EntityManager) {
+  constructor(
+    private readonly em: EntityManager,
+    private readonly userMapper: UserMapper,
+  ) {
     this.userRepository = this.em.getRepository(UserMikroOrmEntity);
   }
 
   async persist(aggregate: User): Promise<Result<UserIdentifier>> {
     try {
-      const userEntity = UserMapper.toPersistence(aggregate);
+      const userEntity = this.userMapper.toPersistence(aggregate);
       await this.em.persistAndFlush(userEntity);
 
-      return Result.ok(new UserIdentifier(userEntity.id));
+      return Result.ok(new UserIdentifier(userEntity.id as number));
     } catch (error) {
       const { message, stackTrace } = formatError(error);
       return Result.error({
@@ -43,7 +46,7 @@ export class UserMikroOrmRepository implements IUserRepository {
       });
     }
 
-    return Result.ok(UserMapper.toDomain(user));
+    return Result.ok(this.userMapper.toDomain(user));
   }
 
   async findByEmailOrSocialHandle(args: {
@@ -62,7 +65,7 @@ export class UserMikroOrmRepository implements IUserRepository {
       });
     }
 
-    return Result.ok(UserMapper.toDomain(user));
+    return Result.ok(this.userMapper.toDomain(user));
   }
 
   async findByEmail(email: string): Promise<Result<User>> {
@@ -75,7 +78,7 @@ export class UserMikroOrmRepository implements IUserRepository {
       });
     }
 
-    return Result.ok(UserMapper.toDomain(user));
+    return Result.ok(this.userMapper.toDomain(user));
   }
 }
 

@@ -65,7 +65,9 @@ export class CreateUser implements ICreateUser {
       });
     }
 
-    return persistUserResult.mapOk((identifier) => ({ id: identifier.value }));
+    return persistUserResult.mapOk((identifier) => ({
+      id: identifier.value as number,
+    }));
   }
 }
 

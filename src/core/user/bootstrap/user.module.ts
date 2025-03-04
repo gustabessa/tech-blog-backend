@@ -4,6 +4,7 @@ import { CreateUserProvider, SignInUserProvider } from '../application';
 import {
   AuthController,
   UserController,
+  UserMapper,
   UserMikroOrmEntity,
   UserMikroOrmRepositoryProvider,
 } from '../infrastructure';
@@ -12,6 +13,7 @@ const providers = [
   UserMikroOrmRepositoryProvider,
   CreateUserProvider,
   SignInUserProvider,
+  UserMapper,
 ];
 
 export class CoreUserModule {

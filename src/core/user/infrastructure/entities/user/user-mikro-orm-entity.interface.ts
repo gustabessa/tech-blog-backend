@@ -1,5 +1,5 @@
 export interface IUserMikroOrmEntity {
-  id: number | null;
+  id: number | undefined;
   name: string;
   socialHandle: string;
   email: string;

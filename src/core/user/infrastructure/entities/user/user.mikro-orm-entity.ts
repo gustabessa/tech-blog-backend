@@ -3,8 +3,8 @@ import { IUserMikroOrmEntity } from './user-mikro-orm-entity.interface';
 
 @Entity({ tableName: 'users' })
 export class UserMikroOrmEntity implements IUserMikroOrmEntity {
-  @PrimaryKey()
-  readonly id!: number;
+  @PrimaryKey({ autoincrement: true })
+  readonly id: number | undefined;
 
   @Property()
   name: string;
@@ -28,6 +28,7 @@ export class UserMikroOrmEntity implements IUserMikroOrmEntity {
   updatedAt!: Date;
 
   constructor(dto: IUserMikroOrmEntity) {
+    this.id = dto.id;
     this.name = dto.name;
     this.socialHandle = dto.socialHandle;
     this.email = dto.email;

@@ -2,7 +2,7 @@ import { AbstractIdentifier, AggregateRoot } from 'src/shared/interfaces';
 
 export class UserIdentifier extends AbstractIdentifier<number> {}
 
-export interface UserProps {
+export interface IUserProps {
   name: string;
   socialHandle: string;
   email: string;
@@ -10,9 +10,9 @@ export interface UserProps {
   salt: string;
 }
 
-export class User extends AggregateRoot<UserIdentifier, UserProps> {
-  get id(): number | null {
-    return this.identifier?.value ?? null;
+export class User extends AggregateRoot<UserIdentifier, IUserProps> {
+  get id(): number | undefined {
+    return this.identifier?.value;
   }
 
   get name(): string {
@@ -35,11 +35,11 @@ export class User extends AggregateRoot<UserIdentifier, UserProps> {
     return this.props.salt;
   }
 
-  private constructor(props: UserProps, id?: UserIdentifier) {
+  private constructor(props: IUserProps, id?: UserIdentifier) {
     super(props, id);
   }
 
-  static create(props: UserProps, id?: UserIdentifier): User {
+  static create(props: IUserProps, id?: UserIdentifier): User {
     return new User(props, id);
   }
 }
