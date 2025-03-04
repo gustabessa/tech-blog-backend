@@ -1,7 +1,7 @@
 import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
 
 @Entity({ tableName: 'tags' })
-export class Tag {
+export class TagMikroOrmEntity {
   @PrimaryKey()
   readonly id!: number;
 
